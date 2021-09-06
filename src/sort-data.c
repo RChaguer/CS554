@@ -1,8 +1,35 @@
-#include "sort-data.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <time.h>
 
-unsigned long max_records = 100; // Not defined as constant because we will be changing it if needed
+#define RECORD_STRING_SIZE 95 // Specified String Length
 
-// Finding partition position
+typedef unsigned long int32b; // 32-bit number from 0 to 2^32 - 1
+
+int32b max_records = 1000; // Not defined as constant because we will be changing it if needed
+
+struct record {
+    int32b myInt;
+    char* myString;
+}; // Record structure
+
+// Comparing two records
+int cmp(const struct record a, const struct record b) {
+    if(a.myInt > b.myInt) return 1;
+    if(a.myInt < b.myInt) return -1;
+    return 0;
+}
+
+// Swaping elements in 
+void swap(struct record *a, struct record *b) {
+  struct record t = *a;
+  *a = *b;
+  *b = t;
+}
+
+// Finding partition position used in quick sort program
 int partition(struct record array[], int low, int high) {
   
   // select the rightmost element as pivot
@@ -80,7 +107,7 @@ int main(int argc, char** argv){
     }
 
     // Reading through input file and completing data array
-    int records = 0;
+    int32b records = 0;
     int32b record_int;
     char record_string[95];
 
@@ -128,6 +155,6 @@ int main(int argc, char** argv){
     // Computing execution time
     t = clock() - t;
     double time_taken = ((double)t)/CLOCKS_PER_SEC; // in seconds
-    printf("Execution Time is: %f s\n", time_taken);
+    printf("C Execution Time is : %f s\n", time_taken);
     return EXIT_SUCCESS;
 }
