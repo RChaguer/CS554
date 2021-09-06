@@ -128,6 +128,6 @@ int main(int argc, char** argv){
     // Computing execution time
     t = clock() - t;
     double time_taken = ((double)t)/CLOCKS_PER_SEC; // in seconds
-    printf("Time taken is: %f s\n", time_taken);
+    printf("Execution Time is: %f s\n", time_taken);
     return EXIT_SUCCESS;
 }
