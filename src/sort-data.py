@@ -1,8 +1,12 @@
 import pandas as pd
-import os, sys, time
+import os
+import sys
+import time
+
 
 def usage():
     print('Usage: ' + sys.argv[0] + ' <file>')
+
 
 def sort(filename):
     # Verify File Existence
@@ -10,19 +14,20 @@ def sort(filename):
         print("Error : " + filename + " does not exist.")
 
     # Output Configuration
-    outputFilename = "sorted_" + filename  
+    outputFilename = "Py_sorted_" + filename
 
-    # Read and Sort Data File 
-    df = pd.read_csv(filename, index_col=False , header=None, names=['int32', 'string'], sep=' ')
+    # Read and Sort Data File
+    df = pd.read_csv(filename, index_col=False, header=None,
+                     names=['int32', 'string'], sep=' ')
     df = df.sort_values(by=['int32'])
 
     # Delete File if exists
     if os.path.exists(outputFilename):
         os.remove(outputFilename)
-    
+
     # Export Sorted File
     df.to_csv(outputFilename, header=False, index=False, sep=' ')
-    
+
 
 if __name__ == "__main__":
     # Input Arguments Verification
@@ -30,7 +35,7 @@ if __name__ == "__main__":
 
     if len(args) < 1:
         usage()
-        exit(-1)  
+        exit(-1)
 
     t0 = time.time()
 
@@ -38,4 +43,4 @@ if __name__ == "__main__":
     sort(args[0])
 
     execution_time = time.time() - t0
-    print("Execution Time : " , execution_time)
+    print("Execution Time is : {:.6f}s".format(execution_time))

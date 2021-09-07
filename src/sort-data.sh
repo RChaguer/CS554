@@ -14,8 +14,9 @@ then
 fi
 
 # Init Params
+TIMEFORMAT=%Rs
 filename=$1
-output_filename=sorted_$filename
+output_filename=Bash_sorted_$filename
 
 # Sort data
-sort -n -k1 $filename > $output_filename
+echo Execution Time is : $((time sort -n -k1 $filename > $output_filename) 2>&1)
