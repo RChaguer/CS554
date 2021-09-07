@@ -5,7 +5,7 @@ all: install
 
 install:
 	sudo apt install python3-pip pwgen gcc
-	sudo pip3 install pandas
+	sudo pip3 install pandas matplotlib
 	gcc $(CFLAGS) sort-data.c -o sort-data
 
 compile: sort-data.c

@@ -28,11 +28,15 @@ Our code requires some external libraries and packages which you might not have,
 
 First of all, if you want to simplify usage, you are encouraged to install "make" if you do not have it on you computer, the command is `sudo apt install make`
 
-In order to install all the requirements, naviguate to the **source folder** of the project and execute the following command `make install`
+Furthermore, the minimal *python* version required for this project is **3.8**.
+
+Moreover, in order to install all the requirements, naviguate to the **source folder** of the project and execute the following command `make install`
 
 This command installs all the requirements and compiles the C code. You can recompile it, if needed, later using: `make compile` or the full command `gcc -Wall -Wextra sort-data.c -o sort-data`
 
 ## Instructions
+
+- If you do not want to generate data because it takes so long, you can **unzip** [data.zip](data.zip) in the source folder.
 
 - To simplify execution, the Makefile is inside the source folder. So, naviguate to **src** before executing the commands shown below.
 

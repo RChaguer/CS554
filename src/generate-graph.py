@@ -1,11 +1,10 @@
 import time
 import sys
 import subprocess
-import numpy as np
 import matplotlib.pyplot as plt
 
 isGen = True
-default_name = "bench_data_%d.txt"
+default_name = "bench_data_%d.dat"
 records = [1000, 100000, 1000000]
 languages = ['Bash', 'Python', 'C']
 colors = {'Bash': "b", 'Python': "r", 'C': "g"}
