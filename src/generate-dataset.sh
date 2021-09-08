@@ -6,14 +6,6 @@ usage()
     echo "Usage: $0 <filename> <num_records>"
 }
 
-# Generate a Number between 0 and 2^32-1 (RANDOM gives between 0 and 2^16-1)
-generate()
-{
-    echo "$(( ( ($RANDOM & 3) << 30 | $RANDOM<<15 | $RANDOM ) )) $1" 
-    #echo "$(od -N 4  -t uL -An /dev/random | tr -d " ") $1" 
-    #echo "$RANDOM"
-}
-
 # Verify the number of arguments given
 if [ $# -ne 2 ]
 then
@@ -39,5 +31,6 @@ string=$(pwgen 95 1)
 # Generate data
 for i in $(eval echo {1..$num_records})
 do
+    # Generate a Number between 0 and 2^32-1 (RANDOM gives between 0 and 2^16-1, so bit shifting is used to get a 32 bit number using RANDOM)
     echo "$(( ( ($RANDOM & 3) << 30 | $RANDOM<<15 | $RANDOM ) )) $string" >> $filename
 done

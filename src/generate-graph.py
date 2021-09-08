@@ -4,7 +4,7 @@ import subprocess
 import matplotlib.pyplot as plt
 
 isGen = True
-default_name = "bench_data_%d.dat"
+default_name = "dt_%d.dat"
 records = [100, 1000, 10000, 100000, 1000000, 10000000]
 languages = ['Bash', 'Python', 'C']
 colors = {'Bash': "b", 'Python': "r", 'C': "g"}
@@ -51,6 +51,8 @@ def createGraph(generation_time, statistics):
         axs[1].plot(records, generation_time, "o-")
         axs[1].set_xlabel('Records')
         axs[1].set_ylabel('Time in Seconds')
+        axs[1].set_xscale('log')
+
     else:
         fig, axs = plt.subplots()
         axs = [axs]
