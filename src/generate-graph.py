@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 isGen = True
 default_name = "bench_data_%d.dat"
-records = [1000, 100000, 1000000]
+records = [100, 1000, 10000, 100000, 1000000, 10000000]
 languages = ['Bash', 'Python', 'C']
 colors = {'Bash': "b", 'Python': "r", 'C': "g"}
 suffix = {'Bash': ".sh", 'Python': ".py", 'C': ""}
@@ -48,7 +48,7 @@ def createGraph(generation_time, statistics):
     if (isGen):
         fig, axs = plt.subplots(2)
         axs[1].set_title("Generation Benchmark")
-        axs[1].plot(records, generation_time)
+        axs[1].plot(records, generation_time, "o-")
         axs[1].set_xlabel('Records')
         axs[1].set_ylabel('Time in Seconds')
     else:

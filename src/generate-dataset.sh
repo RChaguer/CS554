@@ -9,7 +9,9 @@ usage()
 # Generate a Number between 0 and 2^32-1 (RANDOM gives between 0 and 2^16-1)
 generate()
 {
-    echo "$(od -N 4  -t uL -An /dev/random | tr -d " ") $1" 
+    echo "$(( ( ($RANDOM & 3) << 30 | $RANDOM<<15 | $RANDOM ) )) $1" 
+    #echo "$(od -N 4  -t uL -An /dev/random | tr -d " ") $1" 
+    #echo "$RANDOM"
 }
 
 # Verify the number of arguments given
@@ -21,8 +23,7 @@ fi
 
 # Init Params
 filename=$1
-batch_size=1000
-num_records=$(($2 / $batch_size))
+num_records=$2
 
 # Delete the file if exists
 if [ -f $filename ]
@@ -38,11 +39,5 @@ string=$(pwgen 95 1)
 # Generate data
 for i in $(eval echo {1..$num_records})
 do
-    batch=
-    for i in $(eval echo {2..$batch_size})
-    do
-        batch+="$(generate $string)\n"
-    done
-    batch+="$(generate $string)"
-    echo -e $batch >> $filename
+    echo "$(( ( ($RANDOM & 3) << 30 | $RANDOM<<15 | $RANDOM ) )) $string" >> $filename
 done
