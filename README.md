@@ -49,4 +49,4 @@ This command installs all the requirements and compiles the C code. You can reco
 The result would look like this:
 ![Benchmark](src/benchmark_graph.png)
 
-If the data files are already present in the source folder (named dt\_*.dat where * is the scale of records), you can simply execute `make sort_graph` to get a graph representing just the time taken to sort the data at the 3 different scales across the 3 different approaches. This command does not return a graph for the data generation time.
+If all the data files (100, 1000, 10000, 100000, 1000000, 10000000) are already present in the source folder (named dt\_*.dat where * is the scale of records), you can simply execute `make sort_graph` to get a graph representing just the time taken to sort the data at the 3 different scales across the 3 different approaches. This command does not return a graph for the data generation time.
