@@ -45,6 +45,8 @@ This command installs all the requirements and compiles the C code. You can reco
 
 - In order to sort data using Python, you can use `make py_sort` which sorts the 3 data files present in the source folder. Furthermore, you can sort the data of your custom file with the following command: `./sort-data.py <input data file>`. Make sure your input data file is not a path (the custom data file should be inside **src**). Thus, the execution of one of these commands returns a file named `py_sorted_<input data file>`.
 
-- You can also generate a graph for the time taken to generate the data and the time taken to sort the data at the 3 different (and more 100, 1000, 10000, 100000, 1000000,10000000) scales across the 3 different approaches with one of the following commands: `make graph`. Make sure your input data file is not a path (the custom data file should be inside **src**).
+- You can also generate a graph for the time taken to generate the data and the time taken to sort the data at the 3 different (and more 100, 1000, 10000, 100000, 1000000,10000000) scales across the 3 different approaches with one of the following commands: `make graph`. Thanks to numerous optimization efforts, this command takes around 8-10 minutes on our laptops.
+The result would look like this:
+![Benchmark](src/benchmark_graph.png)
 
 If the data files are already present in the source folder (named dt\__.dat where _ is the scale of records), you can simply execute `make sort_graph` to get a graph representing just the time taken to sort the data at the 3 different scales across the 3 different approaches. This command does not return a graph for the data generation time.
